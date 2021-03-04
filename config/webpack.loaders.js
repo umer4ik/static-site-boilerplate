@@ -1,3 +1,4 @@
+/* eslint-disable */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('./site.config');
 
@@ -16,6 +17,15 @@ const html = {
     },
   ],
 };
+// Pug loaders
+const pug = {
+  test: /\.pug$/,
+  use: [
+    {
+      loader: 'pug-loader'
+    }
+  ]
+}
 
 // Javascript loaders
 const js = {
@@ -130,7 +140,7 @@ const fonts = {
   use: [
     {
       loader: 'file-loader',
-      query: {
+      options: {
         name: '[name].[hash].[ext]',
         outputPath: 'fonts/',
       },
@@ -144,7 +154,7 @@ const videos = {
   use: [
     {
       loader: 'file-loader',
-      query: {
+      options: {
         name: '[name].[hash].[ext]',
         outputPath: 'images/',
       },
@@ -153,7 +163,8 @@ const videos = {
 };
 
 module.exports = [
-  html,
+  // html,
+  pug,
   js,
   css,
   sass,
